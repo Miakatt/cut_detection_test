@@ -12,11 +12,11 @@
 // Open Circuit of copper strip causes voltage to increase. 
 //------------------------------------------------------
 
-const int pins[6]= {5, 12,13,14,15,16};
+const int pins[6]= {5,12,13,14,15,16};
 
 void setup() {
   // put your setup code here, to run once:
-  for (int i=0; i<5; i++){
+  for (int i=0; i<6; i++){
     pinMode(pins[i], INPUT);
     digitalWrite(pins[i], HIGH);
   }
@@ -29,8 +29,8 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  int val[5] = {0};
-  for (int i=0; i<5; i++){
+  int val[6] = {0};
+  for (int i=0; i<6; i++){
     val[i] = digitalRead(pins[i]);
   }
   for (int i=0; i<6; i++){
