@@ -1,7 +1,7 @@
 # cut_detection_test
 Cut detector and timer for Michael's experiment.   
 //------------------------------------------------------    
-// Connections
+// Connections  
 // Ch1 = GPIO5  = Pin D1   
 // Ch2 = GPIO12 = Pin D6  
 // Ch3 = GPIO13 = Pin D7  
