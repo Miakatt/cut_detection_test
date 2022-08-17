@@ -11,8 +11,10 @@
 // Connect distal end to GND. 
 // Open Circuit of copper strip causes voltage to increase. 
 //------------------------------------------------------
-
-const int pins[6]= {5,12,13,14,15,16};
+// NOTE: THE MICROPROCESSOR NEEDS TO BE DISCONNECTED FROM THE BOARD BEFORE FLASHING.
+// 
+const int pins[6]= {5, 16, 14, 12, 13, 15};
+                   
 
 void setup() {
   // put your setup code here, to run once:
@@ -24,6 +26,7 @@ void setup() {
   digitalWrite(LED_BUILTIN, HIGH);
 
   Serial.begin(9600);
+  delay(100);
   Serial.println("Begin Monitoring.");
 }
 
@@ -37,8 +40,8 @@ void loop() {
     Serial.print(val[i]);
     Serial.print(" ");
   }
- 
     Serial.println();
+    Serial.flush();
     delay(100);
  
 }
