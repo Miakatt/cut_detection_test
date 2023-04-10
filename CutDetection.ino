@@ -13,9 +13,10 @@
 //------------------------------------------------------
 // NOTE: THE MICROPROCESSOR NEEDS TO BE DISCONNECTED FROM THE BOARD BEFORE FLASHING.
 // 
-const int pins[6]= {5, 16, 14, 12, 13, 15};
-                   
-
+const int pins[6]= {5, 16, 14, 12, 13};
+unsigned long startMillis;  //some global variables available anywhere in the program
+unsigned long currentMillis;                  
+const unsigned long period = 100;
 void setup() {
   // put your setup code here, to run once:
   for (int i=0; i<6; i++){
@@ -25,23 +26,30 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, HIGH);
 
-  Serial.begin(9600);
+  Serial.begin(115200);
   delay(100);
   Serial.println("Begin Monitoring.");
+
+  startMillis = millis();
 }
+
 
 void loop() {
   // put your main code here, to run repeatedly:
-  int val[6] = {0};
-  for (int i=0; i<6; i++){
-    val[i] = digitalRead(pins[i]);
+  currentMillis = millis(); 
+  if (currentMillis - startMillis >= period){
+  
+    int val[5] = {0};
+    for (int i=0; i<5; i++){
+      val[i] = digitalRead(pins[i]);
+    }
+    for (int i=0; i<5; i++){
+      Serial.print(val[i]);
+      Serial.print(" ");
+    }
+      Serial.println();
+      Serial.flush();
+  
+    startMillis = currentMillis;
   }
-  for (int i=0; i<6; i++){
-    Serial.print(val[i]);
-    Serial.print(" ");
-  }
-    Serial.println();
-    Serial.flush();
-    delay(100);
- 
 }
